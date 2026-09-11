@@ -1,0 +1,40 @@
+.atmosphere {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background-size: cover;
+  background-position: center 60%;
+}
+.atmosphere[data-room-atmosphere="space"] {
+  background:
+    radial-gradient(ellipse at 15% 30%, #347c99 0%, transparent 52%),
+    radial-gradient(ellipse at 80% 75%, #65599a 0%, transparent 55%),
+    linear-gradient(145deg, #102339, #182947 55%, #304a70);
+}
+.atmosphere[data-room-atmosphere="space"]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, #f5f7ffdd .8px, transparent 1.4px),
+    radial-gradient(circle, #b4e5ff99 .65px, transparent 1.3px);
+  background-size: 113px 137px, 173px 91px;
+  background-position: 13px 31px, 67px 11px;
+}
+.atmosphere[data-room-atmosphere="arcade"] {
+  background:
+    radial-gradient(ellipse at 0% 40%, #247882a6, transparent 65%),
+    radial-gradient(ellipse at 100% 60%, #85305f99, transparent 65%),
+    #191d30;
+}
+.atmosphere[data-room-atmosphere="arcade"]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(90deg, transparent 0 calc(12.5% - 2px), #83edff5c calc(12.5% - 2px) 12.5%);
+  mask-image: linear-gradient(#000, transparent 82%);
+}
+.atmosphere[data-room-atmosphere="minimal"] {
+  background: radial-gradient(ellipse at 35% 15%, #ffffff, #e7e9ed 75%, #d1d6de);
+}

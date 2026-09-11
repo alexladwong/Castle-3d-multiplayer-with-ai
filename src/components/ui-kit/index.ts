@@ -1,0 +1,38 @@
+// src/components/ui-kit/index.ts  [U0]
+// The design system of docs/UI_REDESIGN.md §7. One import for every package:
+//   import { Display, Section, MiniBoard } from "@/components/ui-kit";
+export { ActionBar, ActionButton, ActionGroup, ActionSeparator } from "./action-bar";
+export type { ActionBarProps, ActionButtonProps } from "./action-bar";
+export { BoardTile } from "./board-tile";
+export type { BoardTileGame, BoardTileProps } from "./board-tile";
+export { ChatList } from "./chat-list";
+export type { ChatListProps } from "./chat-list";
+export { ChatMessage } from "./chat-message";
+export type { ChatMessageProps, ChatMessageVariant } from "./chat-message";
+export { Display } from "./display";
+export type { DisplayProps } from "./display";
+export { Eyebrow } from "./eyebrow";
+export type { EyebrowProps } from "./eyebrow";
+export { FocusHud } from "./focus-hud";
+export type { FocusHudProps } from "./focus-hud";
+export { Kbd } from "./kbd";
+export { MiniBoard, piecesFromFenPlacement } from "./mini-board";
+export type { MiniBoardProps, MiniPiece } from "./mini-board";
+export { MoveList } from "./move-list";
+export type { MoveListProps } from "./move-list";
+export { PlayerChip } from "./player-chip";
+export type { PlayerChipProps } from "./player-chip";
+export { Podium } from "./podium";
+export type { PodiumEntry, PodiumProps } from "./podium";
+export { RatingWindow } from "./rating-window";
+export type { RatingWindowProps } from "./rating-window";
+export { Reveal } from "./reveal";
+export type { RevealProps } from "./reveal";
+export { RoomCard } from "./room-card";
+export type { RoomCardProps } from "./room-card";
+export { Section } from "./section";
+export type { SectionProps } from "./section";
+export { ShortcutsDialog } from "./shortcuts-dialog";
+export type { Shortcut, ShortcutsDialogProps } from "./shortcuts-dialog";
+export { StatPill } from "./stat-pill";
+export type { StatPillProps } from "./stat-pill";

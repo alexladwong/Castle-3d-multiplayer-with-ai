@@ -1,0 +1,27 @@
+/* src/components/game/game.css  [U2]
+   Screen-local CSS for the playing screen. What is left here is what only this
+   screen uses: the turn lamp. The browser-surface theming and the two chat
+   keyframes moved to globals.css at integration — `ChatMessage` is a ui-kit
+   component the landing page renders too, and its bubbles were reaching for
+   animations that only existed once this file had been imported. */
+
+/* The turn lamp: a baize dot that is genuinely lit rather than merely coloured.
+   A soft ring, no blur halo — the glow reads at 8px where a shadow would not. */
+.game-lamp {
+  transition: box-shadow var(--dur-micro) var(--ease-out-soft);
+}
+
+.game-lamp[data-lit="true"] {
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--live) 22%, transparent);
+}
+
+.game-lamp[data-lit="review"] {
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 22%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .game-lamp {
+    transition: none;
+  }
+}
+

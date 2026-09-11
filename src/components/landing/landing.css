@@ -1,0 +1,136 @@
+/* src/components/landing/landing.css  [UI upgrade 2 §2]
+   ---------------------------------------------------------------------------
+   The landing page's own stylesheet (§1 "Custom CSS": no builder touches
+   globals.css). Everything here is scoped to a class this package owns, uses
+   only the tokens globals.css already declares, and introduces no colour.
+
+   Imported once, from hero.tsx — the landing page's top-level client component.
+   --------------------------------------------------------------------------- */
+
+/* ---------------------------------------------------------------- surfaces */
+/* The parts of the page nobody draws still belong to the design: the caret in
+   any field the visitor lands in, the selection they drag over the copy, and
+   the bars on the two horizontal scrollers below. */
+.landing-page {
+  background-color: var(--bg-elevated);
+  caret-color: var(--accent);
+  scrollbar-color: color-mix(in oklab, var(--accent) 30%, var(--line)) transparent;
+}
+
+.landing-page ::selection {
+  background-color: color-mix(in oklab, var(--accent) 32%, transparent);
+  color: var(--fg);
+}
+
+/* Snap scrollers (the roster on a phone, the notation strip): a warm hairline
+   bar that warms further while the pointer is over the rail. */
+.landing-scroller {
+  scrollbar-width: thin;
+  scrollbar-color: var(--line) transparent;
+}
+
+.landing-scroller::-webkit-scrollbar {
+  height: 6px;
+}
+
+.landing-scroller::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.landing-scroller::-webkit-scrollbar-thumb {
+  background-color: var(--line);
+  border-radius: 999px;
+}
+
+.landing-scroller:hover::-webkit-scrollbar-thumb {
+  background-color: color-mix(in oklab, var(--accent) 45%, var(--line));
+}
+
+/* -------------------------------------------------------------- room swatch */
+/* §2.1: a 36px round swatch per room "painted from the room's own colours (two
+   halves: floor and light)". Both halves arrive as inline custom properties
+   read straight out of src/lib/rooms.ts — no colour is invented here. */
+.room-swatch {
+  background-image: linear-gradient(
+    160deg,
+    var(--swatch-light) 0%,
+    var(--swatch-light) 50%,
+    var(--swatch-floor) 50%,
+    var(--swatch-floor) 100%
+  );
+}
+
+/* ------------------------------------------------- §2.2 artefact 1: the window */
+/* The rating window breathes outward once, then rests widened. `Reveal` sets
+   data-revealed on the wrapper, so the animation is tied to the scroll reveal
+   rather than to mount. */
+@keyframes castle-window-widen {
+  from {
+    transform: scaleX(0.42);
+  }
+  62% {
+    transform: scaleX(1.05);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.window-bracket {
+  transform-origin: 50% 50%;
+}
+
+[data-revealed="true"] .window-bracket {
+  animation: castle-window-widen 900ms var(--ease-out-soft) both;
+}
+
+/* ------------------------------------------------ §2.2 artefact 2: the bubbles */
+@keyframes castle-bubble-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+[data-revealed="true"] .bubble-in {
+  animation: castle-bubble-in var(--dur-reveal) var(--ease-out-soft) both;
+  animation-delay: var(--bubble-delay, 0ms);
+}
+
+/* --------------------------------------------------------------- reduced motion */
+/* globals.css already collapses every duration; these rules also throw away the
+   starting transform so the rest state is the finished one, not a frozen frame. */
+@media (prefers-reduced-motion: reduce) {
+  [data-revealed="true"] .window-bracket,
+  [data-revealed="true"] .bubble-in {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media print {
+  [data-revealed="true"] .window-bracket,
+  [data-revealed="true"] .bubble-in {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* The full-width hero keeps its serif character and a single, quiet emphasis. */
+.hero-editorial-title {
+  font-size: clamp(3rem, 5vw, 5.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+}
+
+/* Keep the cinematic hero on its own ground, separate from the reading surface. */
+.landing-hero {
+  background-color: var(--bg);
+  border-bottom: 1px solid var(--line);
+}

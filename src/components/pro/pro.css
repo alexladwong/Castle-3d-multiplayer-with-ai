@@ -1,0 +1,66 @@
+/* src/components/pro/pro.css  [PRO_TUTOR §7]
+ * The things about Clerk's <PricingTable/> that its `appearance` API cannot say.
+ * Imported once, from pro-pricing.tsx, and scoped to that one well so nothing here
+ * can reach the sign-in card or the user-profile modal. Only existing tokens.
+ *
+ * Clerk's class convention is `cl-<element>` plus `cl-<element>__<id>` for the ones
+ * that carry an id — verified against the rendered tree: the plan cards come out as
+ * `cl-pricingTableCard cl-pricingTableCard__free_user` / `__pro`. If that convention
+ * ever changes these rules stop matching and the table falls back to Clerk's own
+ * layout, which is a degradation, not a break.
+ */
+
+/* ONE CONTAINER, TWO COLUMNS.
+ *
+ * §7 asks for "the PricingTable inside a walnut well", and the well is the card.
+ * Clerk then draws each plan as a card of its own on cellar with a 20px radius, and
+ * inside the Pro plan draws the feature block on a third, walnut-toned panel — so a
+ * single price list arrived as paper inside vellum inside paper, three nested boxes
+ * that DESIGN.md's Cards/Containers section does not allow. The plan cards and that
+ * inner panel are flattened onto the well; the two plans are separated by Clerk's own
+ * grid gap and by their own titles, which is what a two-column list needs. */
+[data-slot="pricing-well"] .cl-pricingTableCard,
+[data-slot="pricing-well"] .cl-pricingTableCardFeatures {
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+/* NOT touched: the free plan's empty features block. It is what keeps the two
+ * "Subscribe" buttons on the same baseline, and a card whose action floats halfway up
+ * with dead space under it reads worse than a quiet gap. Clerk's equal-height row
+ * stays as it is.
+ */
+
+/* The One Metal Rule (DESIGN.md): brass marks ONE action per view, and on this page
+ * that action is Pro. "Subscribe" on the plan the reader already has is a second
+ * brass button competing with it, so it steps back to the outline treatment. */
+[data-slot="pricing-well"] .cl-pricingTableCard__free_user .cl-pricingTableCardFooterButton {
+  background: transparent;
+  color: var(--fg-muted);
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+
+[data-slot="pricing-well"] .cl-pricingTableCard__free_user .cl-pricingTableCardFooterButton:hover {
+  color: var(--fg);
+  background: color-mix(in oklab, var(--line) 45%, transparent);
+}
+
+/* Flat brass, like every other primary in the app. Clerk ships the Pro button with a
+ * 1px brass ring, two drop shadows and an `rgba(255,255,255,0.07)` inner highlight —
+ * a cool wash in a system whose stated rule is that every neutral is warm and no cool
+ * wash appears anywhere. */
+[data-slot="pricing-well"] .cl-pricingTableCard__pro .cl-pricingTableCardFooterButton {
+  box-shadow: none;
+}
+
+/* THE FOCUS RING, drawn here because Clerk's own is invisible on the solid button.
+ * Measured on the rendered page: focusing the Pro "Subscribe" — the single conversion
+ * control of this page — added `rgba(0, 0, 0, 0) 0 0 0 0` to its box-shadow in dark
+ * and nothing at all in light, with `outline: none 0px` in both. DESIGN.md: "the brass
+ * focus ring is a 3px ring at 50% opacity outside the control". An `outline` rather
+ * than a ring-shaped box-shadow, so Clerk's own box-shadow cannot overwrite it. */
+[data-slot="pricing-well"] .cl-pricingTableCardFooterButton:focus-visible {
+  outline: 3px solid color-mix(in oklab, var(--ring) 50%, transparent);
+  outline-offset: 2px;
+}

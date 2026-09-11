@@ -1,0 +1,145 @@
+/* src/components/play/play.css  [U5]
+   The lobby's own stylesheet (UI_UPGRADE_2 §1 "Custom CSS": screen-specific CSS
+   lives with its screen, never in globals.css). Imported once, from
+   `mode-picker.tsx` — the lobby's top-level client component.
+
+   Everything here is built from tokens that already exist in globals.css. No new
+   colour is introduced; the room swatches are painted inline from `src/lib/rooms.ts`,
+   which is data, not palette. */
+
+/* --------------------------------------------------------------- type ramp
+   DESIGN.md's ramp, named rather than spelt as arbitrary `text-[…]` sizes, so a
+   step can never drift by a pixel between two panels of the same screen. Body is
+   the app-frame size (0.875rem), not the marketing one. */
+
+.lobby-title {
+  font-size: 1.25rem;
+  line-height: 1.3;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.lobby-body {
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.lobby-micro {
+  font-size: 0.75rem;
+  line-height: 1.35;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.lobby-data {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+/**
+ * The `?mode=` deep link's brass ring, for one second (§3.2). The ring is a
+ * plain box-shadow driven by the data attribute, so under reduced motion it
+ * simply appears and is removed again on the same one-second timer — the final
+ * state is identical either way. Motion adds only the fade out.
+ */
+.lobby-seat[data-flash="true"] {
+  border-radius: 0.75rem;
+  box-shadow:
+    0 0 0 1px var(--accent),
+    0 0 0 4px color-mix(in oklab, var(--accent) 28%, transparent);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .lobby-seat[data-flash="true"] {
+    animation: lobby-seat-flash 1000ms var(--ease-out-soft) forwards;
+  }
+
+  @keyframes lobby-seat-flash {
+    0%,
+    55% {
+      box-shadow:
+        0 0 0 1px var(--accent),
+        0 0 0 4px color-mix(in oklab, var(--accent) 28%, transparent);
+    }
+    100% {
+      box-shadow:
+        0 0 0 1px transparent,
+        0 0 0 4px transparent;
+    }
+  }
+}
+
+/* --------------------------------------------------------- the table board
+   The preview is scenery, like the landing hero, not the board being played,
+   so the room dissolves into the page further than the in-game
+   `.board-canvas-feather` allows: an even fade off all four edges, no corner
+   bias. DESIGN.md: "Don't frame the 3D board with a border, card or box; its
+   light is its edge." */
+
+.lobby-board-dissolve {
+  --lobby-board-mask:
+    linear-gradient(to bottom, transparent 0%, #000 13%, #000 87%, transparent 100%),
+    linear-gradient(to right, transparent 0%, #000 13%, #000 87%, transparent 100%);
+  -webkit-mask-image: var(--lobby-board-mask);
+  mask-image: var(--lobby-board-mask);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+
+/* ------------------------------------------------------------- the roster
+   Five 44px discs. A snap scroller that bleeds to the panel's edges on a phone,
+   a five-column grid from `sm` up. */
+
+.lobby-roster {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(5.25rem, 1fr);
+  gap: 0.5rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 0.25rem;
+}
+
+.lobby-roster > * {
+  scroll-snap-align: start;
+}
+
+/* On a phone the row scrolls, so the trailing edge dissolves rather than
+   stopping flush — the only honest way to say "there is more to the right"
+   without adding a control nobody needs. */
+@media (max-width: 639px) {
+  .lobby-roster {
+    --roster-fade: linear-gradient(to right, #000 0, #000 86%, transparent 100%);
+    -webkit-mask-image: var(--roster-fade);
+    mask-image: var(--roster-fade);
+  }
+}
+
+@media (min-width: 640px) {
+  .lobby-roster {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    overflow-x: visible;
+    padding-bottom: 0;
+  }
+}
+
+/* ------------------------------------------------------------- scoresheet
+   A scoresheet is a table, and a table's numerals are tabular. */
+
+.lobby-scoresheet {
+  width: 100%;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+
+.lobby-scoresheet tbody tr + tr > td {
+  border-top: 1px solid var(--line);
+}

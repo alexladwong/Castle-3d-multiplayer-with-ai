@@ -1,0 +1,413 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-10T12:12:42.437Z",
+  "title": "Design System: Castle",
+  "extensions": {
+    "colorMeta": {
+      "espresso": {
+        "role": "neutral",
+        "displayName": "Espresso",
+        "canonical": "oklch(16.7% 0.011 67.0)",
+        "tonalRamp": [
+          "oklch(15.0% 0.008 67.0)",
+          "oklch(26.4% 0.008 67.0)",
+          "oklch(37.9% 0.009 67.0)",
+          "oklch(49.3% 0.010 67.0)",
+          "oklch(60.7% 0.010 67.0)",
+          "oklch(72.1% 0.010 67.0)",
+          "oklch(83.6% 0.009 67.0)",
+          "oklch(95.0% 0.008 67.0)"
+        ]
+      },
+      "walnut": {
+        "role": "neutral",
+        "displayName": "Walnut",
+        "canonical": "oklch(20.5% 0.015 66.8)",
+        "tonalRamp": [
+          "oklch(15.0% 0.011 66.8)",
+          "oklch(26.4% 0.012 66.8)",
+          "oklch(37.9% 0.013 66.8)",
+          "oklch(49.3% 0.014 66.8)",
+          "oklch(60.7% 0.015 66.8)",
+          "oklch(72.1% 0.014 66.8)",
+          "oklch(83.6% 0.013 66.8)",
+          "oklch(95.0% 0.012 66.8)"
+        ]
+      },
+      "cellar": {
+        "role": "neutral",
+        "displayName": "Cellar",
+        "canonical": "oklch(14.3% 0.007 59.2)",
+        "tonalRamp": [
+          "oklch(15.0% 0.005 59.2)",
+          "oklch(26.4% 0.006 59.2)",
+          "oklch(37.9% 0.006 59.2)",
+          "oklch(49.3% 0.007 59.2)",
+          "oklch(60.7% 0.007 59.2)",
+          "oklch(72.1% 0.007 59.2)",
+          "oklch(83.6% 0.006 59.2)",
+          "oklch(95.0% 0.006 59.2)"
+        ]
+      },
+      "ivory": {
+        "role": "neutral",
+        "displayName": "Ivory",
+        "canonical": "oklch(93.1% 0.029 84.6)",
+        "tonalRamp": [
+          "oklch(15.0% 0.021 84.6)",
+          "oklch(26.4% 0.023 84.6)",
+          "oklch(37.9% 0.025 84.6)",
+          "oklch(49.3% 0.027 84.6)",
+          "oklch(60.7% 0.029 84.6)",
+          "oklch(72.1% 0.027 84.6)",
+          "oklch(83.6% 0.025 84.6)",
+          "oklch(95.0% 0.023 84.6)"
+        ]
+      },
+      "parchment": {
+        "role": "neutral",
+        "displayName": "Parchment",
+        "canonical": "oklch(72.5% 0.038 79.6)",
+        "tonalRamp": [
+          "oklch(15.0% 0.028 79.6)",
+          "oklch(26.4% 0.030 79.6)",
+          "oklch(37.9% 0.033 79.6)",
+          "oklch(49.3% 0.035 79.6)",
+          "oklch(60.7% 0.038 79.6)",
+          "oklch(72.1% 0.035 79.6)",
+          "oklch(83.6% 0.032 79.6)",
+          "oklch(95.0% 0.030 79.6)"
+        ]
+      },
+      "seam": {
+        "role": "neutral",
+        "displayName": "Seam",
+        "canonical": "oklch(26.8% 0.021 66.7)",
+        "tonalRamp": [
+          "oklch(15.0% 0.015 66.7)",
+          "oklch(26.4% 0.017 66.7)",
+          "oklch(37.9% 0.018 66.7)",
+          "oklch(49.3% 0.020 66.7)",
+          "oklch(60.7% 0.021 66.7)",
+          "oklch(72.1% 0.019 66.7)",
+          "oklch(83.6% 0.018 66.7)",
+          "oklch(95.0% 0.017 66.7)"
+        ]
+      },
+      "brass": {
+        "role": "primary",
+        "displayName": "Brass",
+        "canonical": "oklch(73.1% 0.115 85.2)",
+        "tonalRamp": [
+          "oklch(15.0% 0.084 85.2)",
+          "oklch(26.4% 0.092 85.2)",
+          "oklch(37.9% 0.100 85.2)",
+          "oklch(49.3% 0.108 85.2)",
+          "oklch(60.7% 0.115 85.2)",
+          "oklch(72.1% 0.107 85.2)",
+          "oklch(83.6% 0.099 85.2)",
+          "oklch(95.0% 0.091 85.2)"
+        ]
+      },
+      "baize": {
+        "role": "secondary",
+        "displayName": "Baize",
+        "canonical": "oklch(62.3% 0.107 162.0)",
+        "tonalRamp": [
+          "oklch(15.0% 0.078 162.0)",
+          "oklch(26.4% 0.086 162.0)",
+          "oklch(37.9% 0.093 162.0)",
+          "oklch(49.3% 0.100 162.0)",
+          "oklch(60.7% 0.107 162.0)",
+          "oklch(72.1% 0.099 162.0)",
+          "oklch(83.6% 0.092 162.0)",
+          "oklch(95.0% 0.085 162.0)"
+        ]
+      },
+      "ember": {
+        "role": "tertiary",
+        "displayName": "Ember",
+        "canonical": "oklch(63.4% 0.147 34.4)",
+        "tonalRamp": [
+          "oklch(15.0% 0.108 34.4)",
+          "oklch(26.4% 0.118 34.4)",
+          "oklch(37.9% 0.128 34.4)",
+          "oklch(49.3% 0.138 34.4)",
+          "oklch(60.7% 0.147 34.4)",
+          "oklch(72.1% 0.137 34.4)",
+          "oklch(83.6% 0.126 34.4)",
+          "oklch(95.0% 0.116 34.4)"
+        ]
+      },
+      "board-light": {
+        "role": "neutral",
+        "displayName": "Board Light",
+        "canonical": "oklch(80.2% 0.072 77.0)",
+        "tonalRamp": [
+          "oklch(15.0% 0.053 77.0)",
+          "oklch(26.4% 0.058 77.0)",
+          "oklch(37.9% 0.063 77.0)",
+          "oklch(49.3% 0.067 77.0)",
+          "oklch(60.7% 0.072 77.0)",
+          "oklch(72.1% 0.067 77.0)",
+          "oklch(83.6% 0.062 77.0)",
+          "oklch(95.0% 0.057 77.0)"
+        ]
+      },
+      "board-dark": {
+        "role": "neutral",
+        "displayName": "Board Dark",
+        "canonical": "oklch(45.7% 0.085 58.0)",
+        "tonalRamp": [
+          "oklch(15.0% 0.062 58.0)",
+          "oklch(26.4% 0.068 58.0)",
+          "oklch(37.9% 0.074 58.0)",
+          "oklch(49.3% 0.079 58.0)",
+          "oklch(60.7% 0.085 58.0)",
+          "oklch(72.1% 0.079 58.0)",
+          "oklch(83.6% 0.073 58.0)",
+          "oklch(95.0% 0.067 58.0)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Landing headline and result verdicts only; one brass italic word at most."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section and page titles."
+      },
+      "headline-sm": {
+        "displayName": "Headline SM",
+        "purpose": "App-frame verdicts and overlays: the result dialog, the turn overlay, the promotion picker."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Card, dialog and tab headings."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Copy; 46-60ch measure."
+      },
+      "body-app": {
+        "displayName": "Body (app frame)",
+        "purpose": "Copy inside the app frame, one step down from the marketing size."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Eyebrows, section labels, table headers; uppercase, tracked."
+      },
+      "data": {
+        "displayName": "Data",
+        "purpose": "Moves, ratings, clocks, coordinates; tabular figures."
+      }
+    },
+    "shadows": [
+      {
+        "name": "soft-float",
+        "value": "0 20px 60px -30px rgb(0 0 0 / 0.35)",
+        "purpose": "Dialogs, popovers, the fullscreen HUD and the hero glow. Nothing structural."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out-soft",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Default easing for reveals and the canvas fade-in."
+      },
+      {
+        "name": "dur-micro",
+        "value": "120ms",
+        "purpose": "Button and control colour changes."
+      },
+      {
+        "name": "dur-bubble",
+        "value": "160ms",
+        "purpose": "Chat bubble enter (scale 0.98 to 1)."
+      },
+      {
+        "name": "dur-reveal",
+        "value": "400ms",
+        "purpose": "Scroll reveal, once, 8px rise."
+      },
+      {
+        "name": "dur-rise",
+        "value": "500ms",
+        "purpose": "Hero headline word rise, 60ms stagger."
+      },
+      {
+        "name": "dur-room",
+        "value": "600ms",
+        "purpose": "Room swap lighting crossfade."
+      },
+      {
+        "name": "dur-canvas",
+        "value": "800ms",
+        "purpose": "Hero canvas fade-in after first frame."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      },
+      {
+        "name": "xl",
+        "value": "1280px"
+      },
+      {
+        "name": "2xl",
+        "value": "1440px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The one brass action on a screen.",
+      "html": "<button class=\"ds-btn-primary\">Play now</button>",
+      "css": ".ds-btn-primary{background:var(--accent);color:var(--accent-fg);height:32px;padding:0 10px;border:0;border-radius:var(--radius, 0.75rem);font:500 0.875rem/1 var(--font-geist-sans, Geist, system-ui, sans-serif);letter-spacing:-0.005em;cursor:pointer;transition:background 120ms,color 120ms}.ds-btn-primary:hover{background:color-mix(in oklab, var(--accent) 80%, transparent)}.ds-btn-primary:focus-visible{outline:none;box-shadow:0 0 0 3px color-mix(in oklab, var(--accent) 50%, transparent)}.ds-btn-primary:active{transform:translateY(0.5px)}"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "The second action beside a primary.",
+      "html": "<button class=\"ds-btn-outline\">Watch live games</button>",
+      "css": ".ds-btn-outline{background:var(--bg-elevated);color:var(--fg);height:32px;padding:0 10px;border:1px solid var(--line);border-radius:var(--radius, 0.75rem);font:500 0.875rem/1 var(--font-geist-sans, Geist, system-ui, sans-serif);cursor:pointer;transition:background 120ms,border-color 120ms}.ds-btn-outline:hover{background:color-mix(in oklab, var(--bg-elevated) 70%, var(--fg) 6%)}.ds-btn-outline:focus-visible{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in oklab, var(--accent) 50%, transparent)}"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Action-bar and header actions; icon plus label.",
+      "html": "<button class=\"ds-btn-ghost\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M8 3H5a2 2 0 0 0-2 2v3\"/><path d=\"M21 8V5a2 2 0 0 0-2-2h-3\"/><path d=\"M3 16v3a2 2 0 0 0 2 2h3\"/><path d=\"M16 21h3a2 2 0 0 0 2-2v-3\"/></svg><span>Fullscreen</span><kbd class=\"ds-kbd\">F</kbd></button>",
+      "css": ".ds-btn-ghost{display:inline-flex;align-items:center;gap:6px;background:transparent;color:var(--fg);height:32px;padding:0 8px;border:0;border-radius:var(--radius, 0.75rem);font:500 0.875rem/1 var(--font-geist-sans, Geist, system-ui, sans-serif);cursor:pointer;transition:background 120ms}.ds-btn-ghost:hover{background:color-mix(in oklab, var(--bg-elevated) 60%, transparent)}.ds-btn-ghost:focus-visible{outline:none;box-shadow:0 0 0 3px color-mix(in oklab, var(--accent) 50%, transparent)}.ds-kbd{margin-left:4px;padding:1px 5px;border:1px solid var(--line);border-radius:4px;font:500 0.6875rem/1.4 var(--font-geist-mono, ui-monospace, monospace);color:var(--fg-muted)}"
+    },
+    {
+      "name": "Danger Button",
+      "kind": "button",
+      "refersTo": "button-danger",
+      "description": "Resign and other irreversible actions; always behind a confirmation.",
+      "html": "<button class=\"ds-btn-danger\">Resign</button>",
+      "css": ".ds-btn-danger{background:var(--danger);color:var(--fg);height:32px;padding:0 10px;border:0;border-radius:var(--radius, 0.75rem);font:500 0.875rem/1 var(--font-geist-sans, Geist, system-ui, sans-serif);cursor:pointer;transition:background 120ms}.ds-btn-danger:hover{background:color-mix(in oklab, var(--danger) 85%, black)}.ds-btn-danger:focus-visible{outline:none;box-shadow:0 0 0 3px color-mix(in oklab, var(--danger) 45%, transparent)}"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input-text",
+      "description": "SAN move entry, Player 2 name, colour hex readouts.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-field-label\">Move (SAN or e2e4)</span><input class=\"ds-input\" placeholder=\"Nf3\" /></label>",
+      "css": ".ds-field{display:grid;gap:6px;max-width:260px}.ds-field-label{font:500 0.8125rem/1.2 var(--font-geist-sans, Geist, system-ui, sans-serif);color:var(--fg-muted)}.ds-input{height:32px;padding:0 10px;background:color-mix(in oklab, var(--line) 30%, transparent);color:var(--fg);border:1px solid var(--line);border-radius:var(--radius, 0.75rem);font:400 0.875rem/1 var(--font-geist-sans, Geist, system-ui, sans-serif);transition:border-color 120ms,box-shadow 120ms}.ds-input::placeholder{color:var(--fg-muted)}.ds-input:focus-visible{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in oklab, var(--accent) 50%, transparent)}"
+    },
+    {
+      "name": "Header",
+      "kind": "nav",
+      "refersTo": "nav-header",
+      "description": "56px app header: knight mark, wordmark, links, actions.",
+      "html": "<nav class=\"ds-nav\"><span class=\"ds-brand\">&#9822; Castle</span><a class=\"ds-nav-link ds-nav-link--active\" href=\"#\">Play</a><a class=\"ds-nav-link\" href=\"#\">Leaderboard</a><a class=\"ds-nav-link\" href=\"#\">Settings</a><span class=\"ds-nav-spacer\"></span><button class=\"ds-btn-primary-sm\">Sign up</button></nav>",
+      "css": ".ds-nav{display:flex;align-items:center;gap:4px;height:56px;padding:0 16px;background:color-mix(in oklab, var(--bg-elevated) 80%, transparent);border-bottom:1px solid var(--line);backdrop-filter:blur(8px);font-family:var(--font-geist-sans, Geist, system-ui, sans-serif)}.ds-brand{font-weight:600;font-size:0.875rem;letter-spacing:-0.01em;color:var(--fg);margin-right:12px}.ds-nav-link{padding:6px 10px;border-radius:8px;font-size:0.875rem;font-weight:500;color:var(--fg-muted);text-decoration:none;transition:background 120ms,color 120ms}.ds-nav-link:hover{color:var(--fg);background:color-mix(in oklab, var(--bg-elevated) 60%, var(--fg) 5%)}.ds-nav-link--active{color:var(--fg);background:color-mix(in oklab, var(--bg-elevated) 50%, var(--fg) 8%)}.ds-nav-link:focus-visible{outline:none;box-shadow:0 0 0 3px color-mix(in oklab, var(--accent) 50%, transparent)}.ds-nav-spacer{flex:1}.ds-btn-primary-sm{background:var(--accent);color:var(--accent-fg);height:28px;padding:0 10px;border:0;border-radius:10px;font:500 0.8rem/1 inherit;cursor:pointer}"
+    },
+    {
+      "name": "Stat Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Live counters and small facts; baize dot means live.",
+      "html": "<span class=\"ds-chip\"><span class=\"ds-chip-dot\"></span><span class=\"ds-chip-value\">14</span> playing now</span>",
+      "css": ".ds-chip{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;background:var(--bg-elevated);border:1px solid var(--line);color:var(--fg-muted);font:500 0.8125rem/1.2 var(--font-geist-sans, Geist, system-ui, sans-serif)}.ds-chip-dot{width:6px;height:6px;border-radius:999px;background:var(--live);box-shadow:0 0 0 3px color-mix(in oklab, var(--live) 25%, transparent)}.ds-chip-value{color:var(--fg);font-family:var(--font-geist-mono, ui-monospace, monospace);font-variant-numeric:tabular-nums}"
+    },
+    {
+      "name": "Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Walnut container on the espresso ground; no shadow at rest.",
+      "html": "<div class=\"ds-card\"><p class=\"ds-card-eyebrow\">Play your way</p><h3 class=\"ds-card-title\">Play the AI</h3><p class=\"ds-card-body\">Five opponents from Beginner to Grandmaster. Each one explains its moves.</p></div>",
+      "css": ".ds-card{background:var(--bg-elevated);border:1px solid var(--line);border-radius:16px;padding:24px;color:var(--fg);font-family:var(--font-geist-sans, Geist, system-ui, sans-serif);max-width:360px}.ds-card-eyebrow{margin:0 0 8px;font-size:0.8125rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--fg-muted)}.ds-card-title{margin:0 0 8px;font:600 1.25rem/1.3 inherit;letter-spacing:-0.01em}.ds-card-body{margin:0;font-size:0.9375rem;line-height:1.6;color:var(--fg-muted)}"
+    },
+    {
+      "name": "Opponent Chat Bubble",
+      "kind": "custom",
+      "refersTo": "chat-bubble-ai",
+      "description": "What the persona says after a move; brass disc carries its initial.",
+      "html": "<div class=\"ds-msg\"><span class=\"ds-avatar\">A</span><div><div class=\"ds-msg-meta\">Ada · move 12</div><div class=\"ds-bubble-ai\">Your knight on f5 is the whole position. Keep it there.</div></div></div>",
+      "css": ".ds-msg{display:flex;gap:10px;align-items:flex-start;max-width:420px;font-family:var(--font-geist-sans, Geist, system-ui, sans-serif)}.ds-avatar{flex:none;width:28px;height:28px;border-radius:999px;background:var(--accent);color:var(--accent-fg);display:grid;place-items:center;font:600 0.8125rem/1 inherit}.ds-msg-meta{font:500 0.75rem/1.2 inherit;color:var(--fg-muted);margin:4px 0 4px}.ds-bubble-ai{background:var(--bg-elevated);border:1px solid var(--line);color:var(--fg);border-radius:12px;border-top-left-radius:4px;padding:10px 14px;font-size:0.875rem;line-height:1.5}"
+    },
+    {
+      "name": "Player Chat Bubble",
+      "kind": "custom",
+      "refersTo": "chat-bubble-you",
+      "description": "The player's own move or a hint request, right-aligned.",
+      "html": "<div class=\"ds-msg-you\"><div class=\"ds-bubble-you\">You played Nf3</div></div>",
+      "css": ".ds-msg-you{display:flex;justify-content:flex-end;max-width:420px;font-family:var(--font-geist-sans, Geist, system-ui, sans-serif)}.ds-bubble-you{background:var(--line);color:var(--accent);border-radius:12px;border-top-right-radius:4px;padding:8px 12px;font-size:0.875rem;line-height:1.4;font-weight:500}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Castle Games Room",
+    "overview": "# Design System: Castle\n\nCastle is the games room of a great house: stone-cool shadows, timber warmth, a board already set under one good lamp. The interface borrows its materials from the rooms the player actually sits in — espresso grounds, ivory text, brass for anything you can press, baize green for anything live — and stays out of the way of the board. The mood is warm, unhurried and assured: a host who knows the game and does not need to raise their voice.\n\nDensity is generous on marketing surfaces and disciplined inside the app frame, where the board owns the viewport and every control sits in a labelled bar beneath it. Depth comes from tone (espresso, walnut, cellar) rather than from shadow; shadows belong only to things that float. The one bold gesture in the whole system is the live 3D board: on the landing page it plays a historic game in the room the visitor is pointing at, its glow anchored to the top-right corner and dissolving toward the headline. Everything around that moment is quiet on purpose.\n\nConfirmed rejections: blue-grey shadows and neutral greys (every neutral is warm), decorative gradients (the only gradient is the hero's light), and personality painted onto the chrome — character lives in the rooms, the personas and the type, not in ornament.",
+    "keyCharacteristics": [
+      "Palette taken from real materials: espresso, walnut, ivory, brass, baize, ember.",
+      "One accent (brass) for action; baize strictly for live/turn/success; ember strictly for danger/check.",
+      "Fraunces with its optical size and \"wonk\" axes for headlines only; Geist for UI; Geist Mono, tabular, for anything numeric or notational.",
+      "Tonal layering for depth; a single warm shadow reserved for floating layers.",
+      "The board is the hero and the controls are never hidden."
+    ],
+    "rules": [
+      {
+        "name": "The One Metal Rule",
+        "body": "Brass is the only accent used for actions and emphasis, and it covers no more than a tenth of any screen. Its rarity is what makes a primary button read as primary.",
+        "section": "colors"
+      },
+      {
+        "name": "The Live Green Rule",
+        "body": "Baize means \"happening now\": a live game, the side to move, a success. If it is not live, it is not green.",
+        "section": "colors"
+      },
+      {
+        "name": "The Warm Neutral Rule",
+        "body": "No neutral is grey. Every background, border and muted text is a tint of espresso or ivory, so the chrome and the wooden rooms belong to the same world.",
+        "section": "colors"
+      },
+      {
+        "name": "The Scoresheet Rule",
+        "body": "Anything a player would write on a scoresheet — moves, ratings, clocks, coordinates — is set in Geist Mono with tabular figures, never in the UI face.",
+        "section": "typography"
+      },
+      {
+        "name": "The One Italic Rule",
+        "body": "A display headline carries at most one italic word, and that word is brass.",
+        "section": "typography"
+      },
+      {
+        "name": "The Only-Floating-Things-Cast-Shadows Rule",
+        "body": "If an element is part of the page's structure it gets tone and a hairline, never a shadow.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do keep brass under a tenth of any screen and use it for exactly one thing per view: the primary action, the selection, or the emphasised word.",
+      "Do set every move, rating, clock and coordinate in Geist Mono with tabular figures.",
+      "Do put every game action in the visible action bar with a text label at desktop widths and a tooltip below that; disabled actions keep their tooltip and say why.",
+      "Do step depth by tone (espresso → walnut → cellar) and reserve the soft shadow for dialogs, popovers, the HUD and the hero glow.",
+      "Do respect `prefers-reduced-motion`: no staggers, no auto-orbit, instant room swaps, static bubbles."
+    ],
+    "donts": [
+      "Don't introduce a second accent, a gradient, or a cool grey; the only gradient in the system is the hero's light.",
+      "Don't use baize or ember for anything that is not live or dangerous respectively.",
+      "Don't set body copy or UI labels in Fraunces, or exceed one italic word in a headline.",
+      "Don't frame the 3D board with a border, card or box; its light is its edge.",
+      "Don't hide primary game actions behind a menu on desktop, and don't exclaim in chrome copy."
+    ]
+  }
+}

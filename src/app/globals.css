@@ -1,0 +1,487 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ============================================================================
+   "The Study" design system — U0.  docs/UI_REDESIGN.md §1.
+   ----------------------------------------------------------------------------
+   Two layers of variables live here:
+
+   1. STUDY TOKENS (`--bg`, `--fg`, `--accent`, …) — the palette of §1.1. These
+      are the names designers and every other package quote. Hex on purpose: the
+      contrast test (src/lib/ui/__tests__/contrast.test.ts) parses this file.
+   2. SHADCN ROLES (`--background`, `--primary`, …) — derived from layer 1 so the
+      installed base-nova primitives inherit the palette without being forked.
+
+   NAME CLASH, read before editing: shadcn's own `--accent` means "subtle hover
+   surface", but §1.1 claims `--accent` for brass. §1.1 wins, so the shadcn role
+   is carried by `--surface-accent` and re-pointed at `bg-accent`/`text-accent-*`
+   in the `@theme inline` block below. Brass is `--primary` / `bg-primary`.
+   ========================================================================== */
+
+@theme inline {
+  /* ---------------------------------------------------------------- fonts */
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  /* Card/Dialog titles keep Geist — Fraunces is headlines only (§1.2). */
+  --font-heading: var(--font-geist-sans);
+  /*
+   * `--font-display` is set on <html> by next/font (layout.tsx). It is NOT
+   * declared as the `--font-display` theme key on purpose: `@theme inline`
+   * still emits `:root { --font-display: var(--font-display) }`, which is a
+   * custom-property cycle against next/font's own declaration and resolves to
+   * nothing half the time. `font-fraunces` is the alias-free Tailwind handle;
+   * `.font-display` (below) is the class to use, since it also carries the
+   * variation settings.
+   */
+  --font-fraunces: var(--font-display);
+
+  /* --------------------------------------------------- palette (§1.1) */
+  --color-bg: var(--bg);
+  --color-bg-elevated: var(--bg-elevated);
+  --color-bg-sunken: var(--bg-sunken);
+  --color-fg: var(--fg);
+  --color-fg-muted: var(--fg-muted);
+  --color-line: var(--line);
+  --color-brass: var(--accent);
+  --color-brass-fg: var(--accent-fg);
+  --color-live: var(--live);
+  --color-danger: var(--danger);
+
+  /* ----------------------------------------- shadcn roles → study tokens */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  /* see the NAME CLASH note above */
+  --color-accent: var(--surface-accent);
+  --color-accent-foreground: var(--surface-accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Board tokens used by Board2D (P3), MiniBoard (U0) and the 3D custom-colour
+     fallback (P4). Same in both themes — a board is a board. */
+  --color-board-light: var(--board-light);
+  --color-board-dark: var(--board-dark);
+  --color-board-select: var(--board-select);
+  --color-board-legal: var(--board-legal);
+  --color-board-capture: var(--board-capture);
+  --color-board-last: var(--board-last);
+  --color-board-check: var(--board-check);
+
+  /* Radii (§1.1): base 0.75rem, buttons 0.625rem (`rounded-lg`), cards 1rem
+     (`rounded-xl`), chips 999px (`rounded-full`). */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.625rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.25rem;
+  --radius-3xl: 1.5rem;
+  --radius-4xl: 2rem;
+
+  /* Warm, never blue-grey (§1.1). */
+  --shadow-soft: var(--shadow-soft-value);
+}
+
+:root {
+  /* ------------------------------------------------- study tokens (light) */
+  --bg: #f5f4ef;
+  --bg-elevated: #fffefa;
+  --bg-sunken: #e9eae2;
+  --fg: #1d271f;
+  --fg-muted: #53614f;
+  --line: #d0d5ca;
+  /* Restrained forest accent; all text pairings are covered by contrast tests. */
+  --accent: #496545;
+  --accent-fg: #fffefa;
+  --live: #1f6b4d;
+  --danger: #a63d27;
+
+  /* derived surfaces — same palette, one step of warmth apart */
+  --surface-2: #e9ece4;
+  --surface-3: #dee3d8;
+
+  /* ------------------------------------------------------- shadcn (light) */
+  --background: var(--bg);
+  --foreground: var(--fg);
+  --card: var(--bg-elevated);
+  --card-foreground: var(--fg);
+  --popover: var(--bg-elevated);
+  --popover-foreground: var(--fg);
+  --primary: var(--accent);
+  --primary-foreground: var(--accent-fg);
+  --secondary: var(--surface-2);
+  --secondary-foreground: var(--fg);
+  --muted: var(--surface-2);
+  --muted-foreground: var(--fg-muted);
+  --surface-accent: var(--surface-3);
+  --surface-accent-foreground: var(--fg);
+  --destructive: var(--danger);
+  --border: var(--line);
+  --input: var(--line);
+  --ring: var(--accent);
+  --chart-1: var(--accent);
+  --chart-2: var(--live);
+  --chart-3: var(--danger);
+  --chart-4: var(--fg-muted);
+  --chart-5: var(--line);
+  --sidebar: var(--bg-elevated);
+  --sidebar-foreground: var(--fg);
+  --sidebar-primary: var(--accent);
+  --sidebar-primary-foreground: var(--accent-fg);
+  --sidebar-accent: var(--surface-3);
+  --sidebar-accent-foreground: var(--fg);
+  --sidebar-border: var(--line);
+  --sidebar-ring: var(--accent);
+
+  --radius: 0.75rem;
+
+  /* --------------------------------------------------------------- board */
+  --board-light: #d9b98a;
+  --board-dark: #7a4a22;
+  --board-select: #e0bb63;
+  --board-legal: #3f9b73;
+  --board-capture: #dd7256;
+  --board-last: #c9a24a;
+  --board-check: #c4402a;
+
+  /* -------------------------------------------------------------- effects */
+  --shadow-soft-value: 0 20px 60px -30px rgb(0 0 0 / 0.35);
+
+  /* --------------------------------------------------------- motion (§1.3) */
+  --dur-micro: 120ms;
+  --dur-bubble: 160ms;
+  --dur-reveal: 400ms;
+  --dur-rise: 500ms;
+  --dur-room: 600ms;
+  --dur-canvas: 800ms;
+  --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dark {
+  /* -------------------------------------------------- study tokens (dark) */
+  --bg: #151916;
+  --bg-elevated: #1e2420;
+  --bg-sunken: #101410;
+  --fg: #f0f2e9;
+  --fg-muted: #b2b9ae;
+  --line: #343c34;
+  --accent: #bcccad;
+  --accent-fg: #1d271f;
+  --live: #3f9b73;
+  /* Lifted for AA contrast on the refreshed elevated surface. */
+  --danger: #df745e;
+
+  --surface-2: #293129;
+  --surface-3: #343c34;
+
+  /* -------------------------------------------------------- shadcn (dark) */
+  --secondary: var(--surface-2);
+  --muted: var(--surface-2);
+  --surface-accent: var(--surface-3);
+
+  --shadow-soft-value: 0 20px 60px -30px rgb(0 0 0 / 0.6);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-synthesis-weight: none;
+    text-rendering: optimizeLegibility;
+  }
+  html {
+    @apply font-sans;
+    /* 15px on marketing pages, 14px inside the app frame (§1.2) — set per page. */
+    -webkit-tap-highlight-color: transparent;
+  }
+  /* The brass focus ring is the accessibility floor: never remove it. */
+  :focus-visible {
+    outline-color: var(--accent);
+  }
+  ::selection {
+    background-color: color-mix(in oklab, var(--accent) 35%, transparent);
+    color: var(--fg);
+  }
+  /* The surfaces nobody draws still belong to the design: the caret in every
+     field and the scrollbar on every well are themed from the palette so the
+     browser never lends the interface a colour of its own. Lifted here from the
+     lobby's and the game's screen-local stylesheets (UI_UPGRADE_2 §5) so the
+     leaderboard, the profile and the settings pages get them too.
+     `no-scrollbar` still wins where a scroller must show nothing: a class beats
+     a bare pseudo-element. */
+  html {
+    caret-color: var(--accent);
+    scrollbar-width: thin;
+    scrollbar-color: var(--line) transparent;
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    border: 3px solid transparent;
+    border-radius: 999px;
+    background-color: var(--line);
+    background-clip: content-box;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: color-mix(in oklab, var(--accent) 55%, var(--line));
+  }
+}
+
+/* --------------------------------------------------------------- utilities */
+
+/**
+ * Fraunces, wonky and optical-sized, for headlines only (§1.2).
+ * Pair with an explicit `text-*` size; line-height tightens itself at ≥ 56px.
+ */
+@utility font-display {
+  font-family: var(--font-display), var(--font-geist-sans), ui-serif, Georgia, serif;
+  font-variation-settings:
+    "opsz" 144,
+    "SOFT" 40,
+    "WONK" 1;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+/**
+ * `headline-sm` (DESIGN.md type ramp): 2rem / 1.1 / 500, tracking -0.01em.
+ * The app frame's verdicts and overlays — the result dialog, the turn overlay,
+ * the promotion picker — sit here, one step under the marketing headline.
+ * Named without a `font-` prefix on purpose, like `eyebrow` and `tabular`:
+ * tailwind-merge reads `font-*` as the font-family group and would drop the
+ * `font-display` beside it, taking Fraunces off the headline. Declared after
+ * `font-display` so that, paired with it, this step's tighter letter-spacing
+ * wins while the family and the optical axes come from `font-display`.
+ */
+@utility headline-sm {
+  font-size: 2rem;
+  line-height: 1.1;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+/** 13px uppercase label that sits above a headline (§1.2 type scale). */
+@utility eyebrow {
+  font-size: 0.8125rem;
+  line-height: 1.2;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--fg-muted);
+}
+
+/** Every number that can change in place: ratings, clocks, plies, deltas. */
+@utility tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/**
+ * Scroll reveal (§1.3): opacity + 12px translate, once, 400ms (UI_UPGRADE_2 §2.6).
+ * Set `data-revealed="true"` when the IntersectionObserver fires — see
+ * `useReveal` in src/lib/ui/use-reveal.ts, which does exactly that.
+ */
+@utility reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity var(--dur-reveal) var(--ease-out-soft),
+    transform var(--dur-reveal) var(--ease-out-soft);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+
+  &[data-revealed="true"] {
+    opacity: 1;
+    transform: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  /* An IntersectionObserver never runs against a print snapshot; without this a
+     section that has not been scrolled to yet would print blank. */
+  @media print {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/**
+ * Horizontal scrollers that must not show a bar: the action bar (§5.1), the nav
+ * links, the landing notation strip. Referenced by several components since the
+ * redesign landed but never defined, so every one of them was showing a bar.
+ * `scrollbar-width` covers Firefox and Chromium >= 121; the WebKit pseudo-element
+ * covers Safari and older Chromium. Scrolling itself is untouched — keyboard and
+ * wheel still work, which is why this is safe on a focusable scroller.
+ */
+@utility no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/** The one gradient the system allows: the hero vignette behind the canvas. */
+@utility hero-vignette {
+  background: radial-gradient(
+    60% 60% at 55% 45%,
+    color-mix(in oklab, var(--bg-elevated) 92%, transparent) 0%,
+    transparent 70%
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------------------------------------------------------------- the chat
+   `ChatMessage` (ui-kit) is rendered by the game screen and by the landing
+   page's pass-and-play artefact, so its two motions live here rather than in a
+   screen-local stylesheet: a new line rises 6px over `--dur-bubble`, and the
+   opponent's thinking dots lift in turn — the rhythm of someone working, not a
+   generic pulse. Both resolve to their final state under reduced motion. */
+@keyframes game-bubble-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.game-bubble-in {
+  animation: game-bubble-in var(--dur-bubble) var(--ease-out-soft) both;
+}
+
+@keyframes game-typing-dot {
+  0%,
+  70%,
+  100% {
+    opacity: 0.35;
+    transform: none;
+  }
+  35% {
+    opacity: 1;
+    transform: translateY(-2px);
+  }
+}
+
+.game-typing-dot {
+  animation: game-typing-dot 1.2s var(--ease-out-soft) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .game-bubble-in {
+    animation: none;
+  }
+
+  .game-typing-dot {
+    animation: none;
+    opacity: 0.6;
+  }
+}
+
+/* Landing hero: the room's backdrop dissolves into the page ground instead of
+   stopping at a rectangle. A soft ellipse biased to the right (the board sits
+   right of centre) plus a longer fade on the left so the glow never touches the
+   headline column. Applied to the canvas layer and the 2D fallback alike. */
+.hero-canvas-blend {
+  /* Anchored to the top-right corner: the room stays solid where it touches the
+     top and right edges and dissolves diagonally into the lower-left third, toward
+     the headline. Two masks intersected: a corner radial reaching for the far
+     corner, and a diagonal fade toward bottom-left. */
+  --hero-mask:
+    radial-gradient(circle farthest-corner at 100% 0%, #000 0%, #000 52%, rgb(0 0 0 / 0.7) 70%, transparent 96%),
+    linear-gradient(to bottom left, #000 0%, #000 56%, rgb(0 0 0 / 0.55) 78%, transparent 100%),
+    linear-gradient(to bottom, rgb(0 0 0 / 0.45) 0px, #000 110px, #000 72%, transparent 100%),
+    linear-gradient(to right, transparent 0%, rgb(0 0 0 / 0.4) 12%, #000 30%, #000 100%);
+  -webkit-mask-image: var(--hero-mask);
+  mask-image: var(--hero-mask);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+
+/* Below `lg` the hero is a stacked block, not a diagonal, so the desktop mask's
+   corner bias has nothing to bias toward and the canvas reads as a photo card with
+   four straight edges. DESIGN.md: "its light is its edge" — an even feather off all
+   four sides, over a canvas that bleeds to the viewport edges. */
+@media (max-width: 63.999rem) {
+  .hero-canvas-blend {
+    --hero-mask:
+      linear-gradient(to bottom, transparent 0%, #000 12%, #000 88%, transparent 100%),
+      linear-gradient(to right, transparent 0%, #000 10%, #000 90%, transparent 100%);
+  }
+}
+
+/* The game board's canvas, unframed. DESIGN.md: "Don't frame the 3D board with a
+   border, card or box; its light is its edge." A hairline ring used to do exactly
+   that, so the room now dissolves into the page instead — the hero's technique at
+   a fifth of the drama: no corner bias, no diagonal, just an even 5% fade off all
+   four edges, so the board keeps its square and only the room's light softens.
+   The 2D board is deliberately NOT given this: its outer files and ranks are
+   information, not atmosphere. */
+.board-canvas-feather {
+  --board-mask:
+    linear-gradient(to bottom, transparent 0%, #000 5%, #000 95%, transparent 100%),
+    linear-gradient(to right, transparent 0%, #000 5%, #000 95%, transparent 100%);
+  -webkit-mask-image: var(--board-mask);
+  mask-image: var(--board-mask);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+
